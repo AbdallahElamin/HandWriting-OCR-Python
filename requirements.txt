@@ -1,0 +1,49 @@
+# ============================================================
+# HandWriting-OCR — Python Dependencies
+# ============================================================
+#
+# ── QUICK-START (CPU-only, works on any machine) ─────────────
+#   pip install -r requirements.txt
+#
+# ── GPU / CUDA SUPPORT (strongly recommended for speed) ──────
+#   EasyOCR delegates GPU work to PyTorch. Install the correct
+#   PyTorch wheel for your CUDA version BEFORE installing the
+#   rest of the deps.
+#
+#   CUDA 11.8:
+#     pip install torch torchvision torchaudio \
+#         --index-url https://download.pytorch.org/whl/cu118
+#
+#   CUDA 12.1:
+#     pip install torch torchvision torchaudio \
+#         --index-url https://download.pytorch.org/whl/cu121
+#
+#   CUDA 12.4 (latest stable as of 2025):
+#     pip install torch torchvision torchaudio \
+#         --index-url https://download.pytorch.org/whl/cu124
+#
+#   Verify GPU is detected after install:
+#     python -c "import torch; print(torch.cuda.is_available())"
+#
+#   Then install this file normally:
+#     pip install -r requirements.txt
+#
+# NOTE: easyocr will re-use the already-installed torch wheel;
+#       it will NOT downgrade it to a CPU build as long as you
+#       install torch first.
+# ============================================================
+
+# --- Core OCR ---
+easyocr>=1.7.1
+
+# --- Computer Vision ---
+opencv-python>=4.9.0.80
+
+# --- Numerical / Array processing ---
+numpy>=1.26.0
+
+# --- Image decoding (used by EasyOCR internally) ---
+Pillow>=10.3.0
+
+# --- Utilities ---
+tqdm>=4.66.0          # progress bars for batch jobs
