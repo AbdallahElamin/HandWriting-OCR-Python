@@ -1,0 +1,7 @@
+.venv/
+__pycache__/
+ocr_run.log
+*.pyc
+*.pyo
+*.pyd
+.ipynb_checkpoints/

@@ -28,7 +28,7 @@ logging.basicConfig(
     datefmt="%Y-%m-%d %H:%M:%S",
     handlers=[
         logging.StreamHandler(sys.stdout),       # Console
-        logging.FileHandler("ocr_run.log"),      # Persistent log file
+        logging.FileHandler("ocr_run.log", encoding="utf-8"),      # Persistent log file (UTF-8)
     ],
 )
 logger = logging.getLogger(__name__)
@@ -150,13 +150,13 @@ def demo_generator_pattern(
         if result.success:
             # In production you would stream this to a database, message queue, etc.
             logger.info(
-                "[%d] ✓ %s → '%s'",
+                "[%d] [OK] %s → '%s'",
                 i,
                 Path(result.source).name,
                 result.full_text[:60].replace("\n", " "),
             )
         else:
-            logger.warning("[%d] ✗ %s — %s", i, Path(result.source).name, result.error)
+            logger.warning("[%d] [FAIL] %s — %s", i, Path(result.source).name, result.error)
 
 
 # ---------------------------------------------------------------------------
@@ -189,8 +189,8 @@ def main() -> None:
     # ------------------------------------------------------------------
     # Point these paths at real image files / directories on your system.
     # ------------------------------------------------------------------
-    SAMPLE_IMAGE = "sample.jpg"          # Change to a real image path.
-    SAMPLE_DIRECTORY = "./sample_images" # Change to a real directory.
+    SAMPLE_IMAGE = r"C:\Users\user\Pictures\handwriting-images\sample(1).jpg"          # Change to a real image path.
+    SAMPLE_DIRECTORY = r"C:\Users\user\Pictures\handwriting-images" # Change to a real directory.
 
     # Check if sample file exists before running file-based demos.
     if Path(SAMPLE_IMAGE).exists():
